@@ -5,8 +5,10 @@ const energyMeter = document.querySelector("#energy-meter");
 const bondValue = document.querySelector("#bond-value");
 const energyValue = document.querySelector("#energy-value");
 const sleepLabel = document.querySelector("#sleep-label");
+const pageToggle = document.querySelector("#page-toggle");
 
 const defaults = { bond: 32, energy: 72 };
+const ENABLED_KEY = "chonkyPetEnabled";
 let stats = { ...defaults };
 let idleTimer;
 const storage = globalThis.chrome?.storage?.local;
@@ -87,5 +89,24 @@ function clampStat(value, fallback) {
   return Number.isFinite(value) ? Math.max(0, Math.min(100, value)) : fallback;
 }
 
+pageToggle?.addEventListener("change", async () => {
+  try {
+    await storage?.set({ [ENABLED_KEY]: pageToggle.checked });
+  } catch {
+    // The toggle preference just won't persist without extension storage.
+  }
+});
+
+async function loadEnabled() {
+  if (!storage || !pageToggle) return;
+  try {
+    const saved = await storage.get(ENABLED_KEY);
+    pageToggle.checked = saved[ENABLED_KEY] !== false;
+  } catch {
+    // Default to enabled when extension storage is unavailable.
+  }
+}
+
 renderStats();
 loadStats();
+loadEnabled();
