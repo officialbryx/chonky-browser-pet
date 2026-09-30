@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Chonky — Browser Cat",
+  "version": "1.0.0",
+  "description": "A cozy little orange pixel cat to keep you company while you browse.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Visit Chonky"
+  }
+}
