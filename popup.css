@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 340px;
+  margin: 0;
+  padding: 14px;
+  background: #f8efe6;
+  color: #59463c;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+.pet-card {
+  padding: 20px;
+  border: 1px solid #f0dfd1;
+  border-radius: 22px;
+  background: #fffaf5;
+  box-shadow: 0 8px 24px rgb(105 71 49 / 8%);
+}
+
+.heading,
+.meter-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #aa8876;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+h1 {
+  margin: 0;
+  color: #654b3d;
+  font-size: 19px;
+  letter-spacing: -0.5px;
+}
+
+h1 span {
+  color: #df8e68;
+}
+
+.sun {
+  color: #efb85d;
+  font-size: 25px;
+}
+
+.cat-stage {
+  position: relative;
+  display: flex;
+  height: 171px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 16px 0 10px;
+  border-radius: 17px;
+  background: #f7e9d8;
+}
+
+.cat-art {
+  z-index: 1;
+  width: 156px;
+  height: 133px;
+  image-rendering: pixelated;
+}
+
+.stage-shadow {
+  position: absolute;
+  bottom: 21px;
+  left: 50%;
+  width: 87px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(124 82 56 / 15%);
+  transform: translateX(-50%);
+}
+
+.sparkle,
+.sleepy-z {
+  position: absolute;
+  color: #d79559;
+}
+
+.sparkle-one {
+  top: 33px;
+  left: 49px;
+  font-size: 18px;
+}
+
+.sparkle-two {
+  top: 60px;
+  right: 40px;
+  font-size: 15px;
+}
+
+.sleepy-z {
+  z-index: 2;
+  top: 32px;
+  right: 56px;
+  display: none;
+  color: #9b7e8f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status {
+  min-height: 18px;
+  margin: 0 0 17px;
+  color: #927b6e;
+  font-size: 12px;
+  text-align: center;
+}
+
+.meters {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.meter-label {
+  margin-bottom: 5px;
+  color: #8f7667;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.meter-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f0e6dc;
+}
+
+.meter-fill {
+  display: block;
+  width: 32%;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 250ms ease;
+}
+
+.bond-fill {
+  background: #e49b7e;
+}
+
+.energy-fill {
+  width: 72%;
+  background: #e9b96c;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+button {
+  min-height: 53px;
+  padding: 7px 2px;
+  border: 1px solid #f0e0d3;
+  border-radius: 12px;
+  background: #fff5ed;
+  color: #795c4b;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+button span:first-child {
+  display: block;
+  margin-bottom: 3px;
+  color: #d98d6b;
+  font-size: 17px;
+  line-height: 18px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #fbe8d9;
+}
+
+button:focus-visible {
+  outline: 2px solid #bd7b61;
+  outline-offset: 2px;
+}
+
+footer {
+  margin-top: 15px;
+  color: #b19b8e;
+  font-size: 9px;
+  text-align: center;
+}
+
+.state-idle .cat-art {
+  animation: idle 2.4s ease-in-out infinite;
+}
+
+.state-stroll .cat-art {
+  animation: stroll 1.5s ease-in-out infinite;
+}
+
+.state-sleeping .cat-art {
+  animation: sleep 3s ease-in-out infinite;
+}
+
+.state-sleeping .sparkle {
+  display: none;
+}
+
+.state-sleeping .sleepy-z {
+  display: block;
+  animation: float 1.8s ease-in-out infinite;
+}
+
+.state-eating .cat-art {
+  animation: eat 350ms ease-in-out infinite alternate;
+}
+
+.state-playing .cat-art {
+  animation: play 600ms ease-in-out infinite alternate;
+}
+
+@keyframes idle {
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes stroll {
+  0%, 100% { transform: translateX(-10px) scaleX(1); }
+  50% { transform: translateX(10px) scaleX(1); }
+}
+
+@keyframes sleep {
+  50% { transform: translateY(3px) scale(0.98); }
+}
+
+@keyframes eat {
+  to { transform: translateY(4px) scaleY(0.96); }
+}
+
+@keyframes play {
+  to { transform: translateY(-11px) rotate(4deg); }
+}
+
+@keyframes float {
+  50% { transform: translateY(-5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

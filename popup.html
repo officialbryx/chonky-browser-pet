@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chonky, your browser cat</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="pet-card">
+      <header class="heading">
+        <div>
+          <p class="eyebrow">YOUR LITTLE BROWSER BUDDY</p>
+          <h1>Hi, I’m Chonky <span aria-hidden="true">♡</span></h1>
+        </div>
+        <span class="sun" aria-hidden="true">☀</span>
+      </header>
+
+      <section class="cat-stage state-idle" id="cat-stage" aria-label="Chonky the orange cat">
+        <span class="sparkle sparkle-one" aria-hidden="true">✦</span>
+        <span class="sparkle sparkle-two" aria-hidden="true">✧</span>
+        <img class="cat-art" src="cat.svg" alt="An orange pixel-art cat">
+        <span class="stage-shadow" aria-hidden="true"></span>
+        <span class="sleepy-z" aria-hidden="true">z z</span>
+      </section>
+
+      <p class="status" id="status" aria-live="polite">Chonky is enjoying the sunshine.</p>
+
+      <section class="meters" aria-label="Chonky's needs">
+        <div class="meter">
+          <div class="meter-label"><span>Happiness</span><span id="bond-value">32%</span></div>
+          <div class="meter-track" role="progressbar" aria-label="Happiness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="32" id="bond-meter">
+            <span class="meter-fill bond-fill"></span>
+          </div>
+        </div>
+        <div class="meter">
+          <div class="meter-label"><span>Full tummy</span><span id="energy-value">72%</span></div>
+          <div class="meter-track" role="progressbar" aria-label="Full tummy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72" id="energy-meter">
+            <span class="meter-fill energy-fill"></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions" aria-label="Care for Chonky">
+        <button type="button" data-action="play"><span aria-hidden="true">♡</span> Play</button>
+        <button type="button" data-action="feed"><span aria-hidden="true">♧</span> Treat</button>
+        <button type="button" data-action="stroll"><span aria-hidden="true">↝</span> Stroll</button>
+        <button type="button" data-action="sleep"><span aria-hidden="true">☾</span> <span id="sleep-label">Nap</span></button>
+      </div>
+      <footer>Made with a little purr and a lot of love</footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
